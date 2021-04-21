@@ -1,4 +1,5 @@
 from tkinter import Tk, Label, Button, Frame
+import os
 
 
 def update_marks():
@@ -6,7 +7,7 @@ def update_marks():
 
 
 def update_timetables():
-    pass
+    os.system('update_timetable.py')
 
 
 def check_university_updates():
