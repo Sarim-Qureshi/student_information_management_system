@@ -200,7 +200,13 @@ def display():
         tk.Label(master, text='Unsuccessful', foreground='RED').grid(row=19,column=4)
         m="Unsuccessful"
 
-    s.execute("""insert into marks (regno, Name, Maths, OS, AT, COA, CNND, Total, SGPA, Ordinanca) values(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)""", (reg,name,m1,m2,m3,m4,m5,tot,sg,m))
+   
+    try:
+        s.execute("""insert into marks (regno, Name, Maths, OS, AT, COA, CNND, Total, SGPA, Ordinanca) values(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)""", (reg,name,m1,m2,m3,m4,m5,tot,sg,m))
+        messagebox.showinfo("Successful","Marks entered for {}".format(reg))
+
+    except Exception:
+        messagebox.showerror("Unsuccessful","Please refresh the page")
     c.commit()
     c.close()
 
