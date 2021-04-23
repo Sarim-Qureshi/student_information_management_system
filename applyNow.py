@@ -30,7 +30,7 @@ def submit():
     depart = clickedDepart.get()
     phone = inpPhone.get()
     selCompany = sys.argv[1]
-    print(selCompany)
+    #print(selCompany)
     
     if inpName.get() == "":
         messagebox.showwarning("Warning", "Entr Name")
@@ -45,8 +45,8 @@ def submit():
     else:
         try :
             #insert the values in applied table
-            sql = "insert into applied values (%s, %s, %s ,%s, %s)"
-            val = (name, email,year, depart, phone)
+            sql = "insert into applied values (%s, %s, %s ,%s, %s, %s)"
+            val = (name, email,year, depart, phone, selCompany)
             mycursor.execute(sql,val)
             mydb.commit()
 
