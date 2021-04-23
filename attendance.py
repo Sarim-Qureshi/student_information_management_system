@@ -68,24 +68,30 @@ def selectItem(a):
   
     curItem = tree.focus()
     additem = tree.item(curItem)['values'][2]
+    subj = clickedSubj.get()
+
 
     dat = cal.get_date()
-    print(additem)
-
-    try :
-    	sql = "insert into attendance values (%s, %s, %s)"
-    	val = (additem, 78965, dat)
-    	mycursor.execute(sql,val)
-    	response=messagebox.askyesno("Message Box","Mark Attendance for {}".format(additem))
-    	if response==1:
-    		sql = "insert into attendance values (%s, %s, %s)"
-    		val = (additem, 78965, dat)
-    		mycursor.execute(sql,val)
-    		mydb.commit()
-    		print("sucess")
-    except mysql.connector.Error as e:
-    	print("not sucess")
-    	print(e)
+    
+    if clickedSubj.get() == "":
+    	messagebox.showinfo("messagebox", "Enter Subject")
+    elif inpRegisterID.get() == "":
+    	messagebox.showinfo("messagebox", "Enter Register ID")
+    elif cal.get_date() == "":
+    	messagebox.showinfo("messagebox", "Select Date")
+    else :
+    	try :
+    		response=messagebox.askyesno("Message Box","Mark Attendance for {}".format(additem))
+    		if response==1:
+    			sql = "insert into attendance values (%s, %s, %s)"
+    			val = (additem, 78965, subj)
+    			mycursor.execute(sql,val)
+    			mydb.commit()
+    			messagebox.showinfo("Message Box","Attendance Marked")
+    	
+    	except mysql.connector.Error as e:
+    		print("not sucess")
+    		print(e)
     
 
 
@@ -97,6 +103,25 @@ Label(root, text = "Enter Register Id").place(x = 30, y= 50)
 inpRegisterID = StringVar()
 registerId = Entry(root, width = 30, textvariable = inpRegisterID).place(x = 150, y = 50)
 Button(root, text = "Show",command = addrecord).place(x = 350 , y = 50)
+
+
+
+
+optionSubj = ["EM-4",
+				"OS",
+				"COA",
+				"CNND",
+				"AT"]
+stdSubj = Label(root, text = " Select Subject").place(x = 420, y = 50)
+clickedSubj = StringVar()
+inputSubj = OptionMenu(root, clickedSubj, *optionSubj).place(x = 550, y = 50)
+
+
+
+
+
+
+
 
 
 
