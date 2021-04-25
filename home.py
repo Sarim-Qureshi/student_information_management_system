@@ -6,11 +6,11 @@ def handle_radio():
     if var.get() == 'NA':
         messagebox.showinfo('Choose your role', 'You have not specified your role')
     else:
-        if var.get() == 'A':
-            os.system('student.py')
-        elif var.get() == 'C':
-            os.system('exam.py')
-        print(var.get())
+        if var.get() == 'student':
+            os.system('login.py student')
+        elif var.get() == 'exam':
+            os.system('login.py exam')
+
 
 
 def on_enter(e):
@@ -41,19 +41,19 @@ l.pack(pady=(20, 15))
 l.configure(background='#999', foreground='#111')
 var = StringVar()
 var.set('NA')
-r1 = Radiobutton(f, text='Student', variable=var, value='A', padx=30, font='consolas 14 bold')
+r1 = Radiobutton(f, text='Student', variable=var, value='student', padx=30, font='consolas 14 bold')
 r1.pack(pady=5, anchor='w')
 r1.configure(background='#999', foreground='#111')
-r2 = Radiobutton(f, text='Faculty', variable=var, value='B', padx=30, font='consolas 14 bold')
+r2 = Radiobutton(f, text='Faculty', variable=var, value='faculty', padx=30, font='consolas 14 bold')
 r2.pack(pady=5, anchor='w')
 r2.configure(background='#999', foreground='#111')
-r3 = Radiobutton(f, text='Exam section', variable=var, value='C', padx=30, font='consolas 14 bold')
+r3 = Radiobutton(f, text='Exam section', variable=var, value='exam', padx=30, font='consolas 14 bold')
 r3.pack(pady=5, anchor='w')
 r3.configure(background='#999', foreground='#111')
-r4 = Radiobutton(f, text='Placement Cell', variable=var, value='D', padx=30, font='consolas 14 bold')
+r4 = Radiobutton(f, text='Placement Cell', variable=var, value='placement', padx=30, font='consolas 14 bold')
 r4.pack(pady=5, anchor='w')
 r4.configure(background='#999', foreground='#111')
-r5 = Radiobutton(f, text='Administrator', variable=var, value='E', padx=30, font='consolas 14 bold')
+r5 = Radiobutton(f, text='Administrator', variable=var, value='admin', padx=30, font='consolas 14 bold')
 r5.pack(pady=5, anchor='w')
 r5.configure(background='#999', foreground='#111')
 
