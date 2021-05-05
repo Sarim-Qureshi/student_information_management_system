@@ -1,5 +1,6 @@
 from tkinter import Tk, Label, Button, Frame, Scrollbar, Listbox, END, ACTIVE, filedialog, simpledialog, messagebox
 import mysql.connector
+import sys
 
 
 def on_enter(e):
@@ -86,8 +87,12 @@ def add_timetable():
 root = Tk()
 root.geometry("1000x670+0+0")
 root.resizable(False, False)
+root.title('Student Information Management System')
 root.configure(background='#222')
-head = Label(root, text='Student Information Management System', font='consolas 30 bold')
+if sys.argv[1] != 'student':
+    head = Label(root, text='Update timetables', font='consolas 30 bold')
+else:
+    head = Label(root, text='View timetables', font='consolas 30 bold')
 head.pack(pady=(35, 0))
 head.configure(background='#222', foreground='white')
 
@@ -105,7 +110,10 @@ ls.pack()
 sb.config(command=ls.yview)
 db = mysql.connector.connect(host='localhost', user='root', password='', database='sims')
 c = db.cursor()
-c.execute('select name from timetable')
+if sys.argv[1] != 'student':
+    c.execute('select name from timetable')
+else:
+    c.execute('select name from timetable where student_visibility=1')
 result=c.fetchall()
 for x in result:
     ls.insert(END, x)
@@ -119,17 +127,19 @@ f2 = Frame(root, width=600, height=300, borderwidth=10, relief='groove')
 f2.configure(background='#999')
 f2.pack(pady=(50, 20), padx=(60, 5), anchor='c')
 
-b0 = Button(f2, text='Add timetable', command=add_timetable, cursor='hand2', font='consolas 14 bold', pady=1, padx=10)
-b0.bind("<Enter>", on_enter0)
-b0.bind("<Leave>", on_leave0)
-b0.grid(row=0, column=0)
-b0.configure(background='#3cb043')
+if sys.argv[1] != 'student':
+    b0 = Button(f2, text='Add timetable', command=add_timetable, cursor='hand2', font='consolas 14 bold', pady=1, padx=10)
+    b0.bind("<Enter>", on_enter0)
+    b0.bind("<Leave>", on_leave0)
+    b0.grid(row=0, column=0)
+    b0.configure(background='#3cb043')
 
-b1 = Button(f2, text='Edit timetable', command=edit_timetable, cursor='hand2', font='consolas 14 bold', pady=1, padx=10)
-b1.bind("<Enter>", on_enter)
-b1.bind("<Leave>", on_leave)
-b1.grid(row=0, column=1)
-b1.configure(background='#0277bd')
+if sys.argv[1] != 'student':
+    b1 = Button(f2, text='Edit timetable', command=edit_timetable, cursor='hand2', font='consolas 14 bold', pady=1, padx=10)
+    b1.bind("<Enter>", on_enter)
+    b1.bind("<Leave>", on_leave)
+    b1.grid(row=0, column=1)
+    b1.configure(background='#0277bd')
 
 bv = Button(f2, text='View timetable', command=view_timetable, cursor='hand2', font='consolas 14 bold', pady=1, padx=10)
 bv.bind("<Enter>", on_enterv)
@@ -137,11 +147,12 @@ bv.bind("<Leave>", on_leavev)
 bv.grid(row=0, column=2)
 bv.configure(background='#fee227')
 
-bdel = Button(f2, text='Delete timetable', command=delete_timetable, cursor='hand2', font='consolas 14 bold', pady=1, padx=10)
-bdel.bind("<Enter>", on_enter_del)
-bdel.bind("<Leave>", on_leave_del)
-bdel.grid(row=0, column=3)
-bdel.configure(background='#ea3c53')
+if sys.argv[1] != 'student':
+    bdel = Button(f2, text='Delete timetable', command=delete_timetable, cursor='hand2', font='consolas 14 bold', pady=1, padx=10)
+    bdel.bind("<Enter>", on_enter_del)
+    bdel.bind("<Leave>", on_leave_del)
+    bdel.grid(row=0, column=3)
+    bdel.configure(background='#ea3c53')
 
 
 

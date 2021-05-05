@@ -58,14 +58,15 @@ def add_timetable():
 
 
 def edit_timetable_list():
-    os.system('update_timetable2.py')
+    os.system('update_timetable2.py exam')
 
 
 root = Tk()
 root.geometry("1000x670+0+0")
 root.resizable(False, False)
+root.title('Student Information Management System')
 root.configure(background='#222')
-head = Label(root, text='Student Information Management System', font='consolas 30 bold')
+head = Label(root, text='Add timetables', font='consolas 30 bold')
 head.pack(pady=(35, 0))
 head.configure(background='#222', foreground='white')
 

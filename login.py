@@ -48,19 +48,25 @@ def login():
         res = cursor.fetchall()
 
         if len(res) == 0:
-            messagebox.showerror('Invalid username', 'Enter the correct username to login '
+            if sys.argv[1] == 'student':
+                messagebox.showerror('Invalid username', 'Enter the correct username to login '
                                                      'or create an account if you do not have one')
+            else:
+                messagebox.showerror('Invalid username', 'Enter the correct username to login')
         else:
             db_pass = (res[0])[0]
             if db_pass != PassWord:
                 messagebox.showerror('Invalid password', 'Enter the correct password to login')
             else:
-                cursor.execute('select * from register where username=%s', (UserName,))
-                res = cursor.fetchall()
-                fn = (res[0])[0]
-                ln = (res[0])[1]
-                ri = str((res[0])[2])
-                os.system(f'student.py {fn} {ln} {ri}')
+                if sys.argv[1] == 'student':
+                    cursor.execute("select * from register where username=%s", (UserName,))
+                    res = cursor.fetchall()
+                    fn = ((res[0])[0]).strip()
+                    ln = ((res[0])[1]).strip()
+                    ri = (str((res[0])[2])).strip()
+                    os.system(f'student.py {fn} {ln} {ri}')
+                else:
+                    os.system(sys.argv[1]+'.py '+UserName)
     except mysql.connector.Error as e:
         messagebox.showerror('Error', 'An error occured. Try again after some time')
 
@@ -78,7 +84,8 @@ root = Tk()
 root.geometry("1000x670+0+0")
 root.resizable(False, False)
 root.configure(background='#222')
-head = Label(root, text='Student Information Management System', font='consolas 30 bold')
+root.title('Student Information Management System')
+head = Label(root, text='Login Page', font='consolas 30 bold')
 head.pack(pady=(35, 0))
 head.configure(background='#222', foreground='white')
 

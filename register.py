@@ -107,7 +107,8 @@ def register(firstName, lastName, RegisterId, PhoneNumber, SelYear, SelDepart, E
                 psd = ''.join((random.choice(string.ascii_uppercase + string.ascii_lowercase + string.digits) for x in range(8)))
 
                 reciever = inpEmailid.get()
-                Usrpwd = "Congratulations {} {}!! You are verified. Your username and password are as follows:\nUsername: {}\nPassword: {}\nKindly Change your Password as soon as possible.\nThank You ".format(
+                Usrpwd = "Congratulations {} {}!! You are verified. Your username and password are as follows:\nUsername: {}\nPassword: {}" \
+                         "\nTo change your credentials, contact the office in the college or send a mail to <office.sakec@sakec.ac.in>\nThank You ".format(
                     firstName, lastName, uname, psd)
                 messagebox.showinfo("Verified", "Kindly check your email for username and password")
 
@@ -157,9 +158,10 @@ def register(firstName, lastName, RegisterId, PhoneNumber, SelYear, SelDepart, E
 root = Tk()
 root.geometry("1300x670+0+0")
 root.resizable(False, False)
+root.title('Student Information Management System')
 root.configure(background='#222')
 
-head = Label(root, text='Student Information Management System', font='consolas 30 bold')
+head = Label(root, text='Create an account', font='consolas 30 bold')
 head.pack(pady=(35, 0))
 head.configure(background='#222', foreground='white')
 

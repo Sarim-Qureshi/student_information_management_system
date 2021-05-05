@@ -27,6 +27,7 @@ root = Tk()
 root.geometry("1250x650+0+0")
 root.resizable(False, False)
 root.configure(background='#222')
+root.title('Student Information Management System')
 
 head = Label(root, text='Student Information Management System', font='consolas 30 bold')
 head.pack(pady=(35, 0))

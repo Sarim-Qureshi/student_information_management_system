@@ -1,8 +1,10 @@
 from tkinter import Tk, Label, Button, Frame
+import os
+import sys
 
 
 def exam_details():
-    pass
+    os.system('update_timetable2.py student')
 
 
 def placement_details():
@@ -31,7 +33,8 @@ root = Tk()
 root.geometry("1000x600+0+0")
 root.resizable(False, False)
 root.configure(background='#222')
-head = Label(root, text='Student Information Management System', font='consolas 30 bold')
+root.title('Student Information Management System')
+head = Label(root, text=f'Welcome {sys.argv[1]} {sys.argv[2]}\nwhat would you like to check?', font='consolas 30 bold')
 head.pack(pady=(35, 0))
 head.configure(background='#222', foreground='white')
 

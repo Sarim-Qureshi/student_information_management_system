@@ -6,6 +6,7 @@ from mysql.connector import MySQLConnection
 root = Tk()
 root.geometry("1300x670+0+0")
 root.resizable(False, False)
+root.title('Student Information Management System')
 root.configure(background='#222')
 
 

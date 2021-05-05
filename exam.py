@@ -31,8 +31,9 @@ def on_leave(e):
 root = Tk()
 root.geometry("1000x600+0+0")
 root.resizable(False, False)
+root.title('Student Information Management System')
 root.configure(background='#222')
-head = Label(root, text='Student Information Management System', font='consolas 30 bold')
+head = Label(root, text='Exam Section', font='consolas 30 bold')
 head.pack(pady=(35, 0))
 head.configure(background='#222', foreground='white')
 
