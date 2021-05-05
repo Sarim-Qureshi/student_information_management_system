@@ -30,9 +30,10 @@ def verify():
     SelYear = clickedYear.get().strip()
     SelDepart = clickedDepart.get().strip()
     EmailId = inpEmailid.get().strip()
+    Sem = clickedSem.get().strip()
 
     if len(firstName) == 0 or len(lastName) == 0 or len(RegisterId) == 0 or len(PhoneNumber) == 0 or len(
-            SelYear) == 0 or len(SelDepart) == 0 or len(EmailId) == 0:
+            SelYear) == 0 or len(SelDepart) == 0 or len(EmailId) == 0 or len(Sem) == 0:
         messagebox.showwarning("Empty fields", "Enter all the fields")
         return
     else:
@@ -63,7 +64,7 @@ def verify():
 
 
 
-def register(firstName, lastName, RegisterId, PhoneNumber, SelYear, SelDepart, EmailId):
+def register(firstName, lastName, RegisterId, PhoneNumber, SelYear, SelDepart, EmailId, Sem):
         mydb = mysql.connector.connect(
             host="localhost",
             user="root",
@@ -82,8 +83,9 @@ def register(firstName, lastName, RegisterId, PhoneNumber, SelYear, SelDepart, E
         yr = (res[0])[4]
         dep = (res[0])[5]
         email = (res[0])[6]
+        sem = (res[0])[9]
 
-        if firstName != fn or lastName != ln or RegisterId != ri or PhoneNumber != pn or SelYear != yr or SelDepart != dep or EmailId != email:
+        if firstName != fn or lastName != ln or RegisterId != ri or PhoneNumber != pn or SelYear != yr or SelDepart != dep or EmailId != email or Sem != sem:
             messagebox.showerror('Invalid credentials', 'Your credentials are invalid')
             return
 
@@ -140,6 +142,7 @@ def register(firstName, lastName, RegisterId, PhoneNumber, SelYear, SelDepart, E
                 clickedYear.set("")
                 clickedDepart.set("")
                 inpEmailid.set("")
+                clickedSem.set("")
 
 
         else:
@@ -162,12 +165,12 @@ root.title('Student Information Management System')
 root.configure(background='#222')
 
 head = Label(root, text='Create an account', font='consolas 30 bold')
-head.pack(pady=(35, 0))
+head.pack(pady=(5, 0))
 head.configure(background='#222', foreground='white')
 
 f1 = Frame(root, width=800, height=500, borderwidth=10, relief='groove')
 f1.configure(background='#999')
-f1.pack(pady=(50, 20), padx=(60, 5), anchor='c')
+f1.pack(pady=(10, 10), padx=(60, 5), anchor='c')
 
 inpFirstName = StringVar()
 firstname = Label(f1, text="First Name", font='consolas 15 bold')
@@ -215,31 +218,41 @@ inputstdYear = OptionMenu(f1, clickedYear, *optionYear,)
 inputstdYear.grid(row=4, column=1, pady=(15, 15), padx=(20, 70))
 inputstdYear.configure(background='#999', font='consolas 12 bold')
 
+optionSem = ["1", "2", "3", "4", "5", "6", "7", "8"]
+stdSem = Label(f1, text="Semester", font='consolas 15 bold')
+stdSem.grid(row=5, column=0, pady=(15, 15), padx=(70, 20))
+stdSem.configure(background='#999')
+
+clickedSem = StringVar()
+inputstdSem = OptionMenu(f1, clickedSem, *optionSem,)
+inputstdSem.grid(row=5, column=1, pady=(15, 15), padx=(20, 70))
+inputstdSem.configure(background='#999', font='consolas 12 bold')
+
 optionDepart = ["Information Technology",
                 "Computer Engineering",
                 "Electronics",
                 "Electronics and Telecommunications"]
 
 stdDepart = Label(f1, text="Department", font='consolas 15 bold')
-stdDepart.grid(row=5, column=0, pady=(15, 15), padx=(70, 20))
+stdDepart.grid(row=6, column=0, pady=(15, 15), padx=(70, 20))
 stdDepart.configure(background='#999')
 
 clickedDepart = StringVar()
 inputstdDepart = OptionMenu(f1, clickedDepart, *optionDepart)
-inputstdDepart.grid(row=5, column=1, pady=(15, 15), padx=(20, 70))
+inputstdDepart.grid(row=6, column=1, pady=(15, 15), padx=(20, 70))
 inputstdDepart.configure(background='#999', font='consolas 12 bold')
 
 inpEmailid = StringVar()
 emailId = Label(f1, text="Email ID", font='consolas 15 bold')
-emailId.grid(row=6, column=0, pady=(15, 15), padx=(70, 20))
+emailId.grid(row=7, column=0, pady=(15, 15), padx=(70, 20))
 emailId.configure(background='#999')
 
 inputemailId = Entry(f1, width=20, textvariable=inpEmailid, font='consolas 15 bold')
-inputemailId.grid(row=6, column=1, pady=(15, 15), padx=(20, 70))
+inputemailId.grid(row=7, column=1, pady=(15, 15), padx=(20, 70))
 # inputemailId.configure(background='#999')
 
 b3 = Button(f1, text="Register", cursor='hand2', command=verify, font='consolas 15 bold')
-b3.grid(row=7, column=0, columnspan=2, pady=(15, 15), padx=(70, 70))
+b3.grid(row=8, column=0, columnspan=2, pady=(15, 15), padx=(70, 70))
 b3.bind("<Enter>", on_enter2)
 b3.bind("<Leave>", on_leave2)
 b3.configure(background='#3cb043')

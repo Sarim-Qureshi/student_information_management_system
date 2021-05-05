@@ -16,7 +16,7 @@ def college_info():
 
 
 def course_info():
-    pass
+    os.system('course_info.py')
 
 
 def on_enter(e):
