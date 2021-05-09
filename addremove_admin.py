@@ -220,7 +220,7 @@ inputCompany = OptionMenu(tab3, clickedCompany, *optionCompany,).place(x = 150, 
 
 Button(tab3, text = "Show",command = company_details).place(x = 350 , y = 50)
 
-tree = ttk.Treeview(tab2, column=("c1", "c2", "c3","c4"), show='headings')
+tree = ttk.Treeview(tab3, column=("c1", "c2", "c3","c4"), show='headings')
 
 tree.column("#1", anchor = tk.CENTER, width = 100)
 tree.heading("#1", text="Company Name")
