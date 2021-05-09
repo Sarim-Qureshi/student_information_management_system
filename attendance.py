@@ -157,6 +157,6 @@ tree.bind('<ButtonRelease-1>', selectItem)
 
 tree.place(x = 40, y = 280)
 
-Button(root, text = "Mark Attendance", command = markAttendance).place(x = 300 , y = 530)
+#Button(root, text = "Mark Attendance", command = markAttendance).place(x = 300 , y = 530)
 
 root.mainloop()

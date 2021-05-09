@@ -60,7 +60,7 @@ def display():
 	Label(tab2, text = company).place(x = 150,y = 80)
 	
 	try :
-		sql = ("select studPlaced,seats,applied from placement where company = \"{}\" ".format(company))
+		sql = ("select eligibity,seats,applied from placement where company = \"{}\" ".format(company))
 		mycursor.execute(sql)
 		res = mycursor.fetchall()
 		eligible = []
@@ -78,7 +78,6 @@ def display():
 
 	if eligible[0][1] <= eligible[0][2]:
 		Label(tab2, text = "Seats Not Available \n Try next Time!!").place(x = 250, y = 200)
-		
 		#print("Seats Not Available")
 	else:
 		Label(tab2 , text = " ").place(x = 250, y = 200)
@@ -117,24 +116,5 @@ Label(tab2, text = "Students Applied").place (x = 40, y = 180)
 
 
 
-
-
-
-
-
 #Tab 3
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 root.mainloop()
