@@ -3,7 +3,7 @@ import os
 
 
 def update_marks():
-    pass
+    os.system('update_marks.py exam')
 
 
 def update_timetables():

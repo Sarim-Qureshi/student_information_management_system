@@ -19,6 +19,10 @@ def course_info():
     os.system('course_info.py')
 
 
+def marks():
+    os.system(f'update_marks.py {sys.argv[3]}')
+
+
 def on_enter(e):
     e.widget['background'] = '#051094'
     e.widget['foreground'] = 'white'
@@ -30,17 +34,17 @@ def on_leave(e):
 
 
 root = Tk()
-root.geometry("1000x600+0+0")
+root.geometry("1000x690+0+0")
 root.resizable(False, False)
 root.configure(background='#222')
 root.title('Student Information Management System')
 head = Label(root, text=f'Welcome {sys.argv[1]} {sys.argv[2]}\nwhat would you like to check?', font='consolas 30 bold')
-head.pack(pady=(35, 0))
+head.pack(pady=(30, 0))
 head.configure(background='#222', foreground='white')
 
 f1 = Frame(root, width=300, height=70, borderwidth=10, relief='groove')
 f1.configure(background='#999')
-f1.pack(pady=(50, 20), anchor='c')
+f1.pack(pady=(35, 20), anchor='c')
 b1 = Button(f1, text='Exam details', command=exam_details, cursor='hand2', font='consolas 14 bold', pady=1, padx=10)
 b1.bind("<Enter>", on_enter)
 b1.bind("<Leave>", on_leave)
@@ -73,5 +77,14 @@ b4.bind("<Enter>", on_enter)
 b4.bind("<Leave>", on_leave)
 b4.pack()
 b4.configure(background='#0277bd')
+
+f5 = Frame(root, width=300, height=70, borderwidth=10, relief='groove')
+f5.configure(background='#999')
+f5.pack(pady=(20, 20), anchor='c')
+b5 = Button(f5, text='Exam results', command=marks, cursor='hand2', font='consolas 14 bold', pady=1, padx=10)
+b5.bind("<Enter>", on_enter)
+b5.bind("<Leave>", on_leave)
+b5.pack()
+b5.configure(background='#0277bd')
 
 root.mainloop()

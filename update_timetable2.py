@@ -84,6 +84,7 @@ def edit_timetable():
 def add_timetable():
     root.destroy()
 
+
 root = Tk()
 root.geometry("1000x670+0+0")
 root.resizable(False, False)

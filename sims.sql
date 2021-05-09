@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: May 05, 2021 at 10:31 AM
+-- Generation Time: May 09, 2021 at 11:45 AM
 -- Server version: 8.0.21
 -- PHP Version: 7.4.9
 
@@ -20,6 +20,55 @@ SET time_zone = "+00:00";
 --
 -- Database: `sims`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `ia1sem1`
+--
+
+DROP TABLE IF EXISTS `ia1sem1`;
+CREATE TABLE IF NOT EXISTS `ia1sem1` (
+  `registration_id` int NOT NULL,
+  `subject1marks` int NOT NULL,
+  `subject2marks` int NOT NULL,
+  `subject3marks` int NOT NULL,
+  `subject4marks` int NOT NULL,
+  `subject5marks` int NOT NULL,
+  PRIMARY KEY (`registration_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `ia1sem1`
+--
+
+INSERT INTO `ia1sem1` (`registration_id`, `subject1marks`, `subject2marks`, `subject3marks`, `subject4marks`, `subject5marks`) VALUES
+(1, 20, 20, 20, 20, 20);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `ia1sem3`
+--
+
+DROP TABLE IF EXISTS `ia1sem3`;
+CREATE TABLE IF NOT EXISTS `ia1sem3` (
+  `registration_id` int NOT NULL,
+  `department` varchar(60) NOT NULL,
+  `subject1marks` int NOT NULL,
+  `subject2marks` int NOT NULL,
+  `subject3marks` int NOT NULL,
+  `subject4marks` int NOT NULL,
+  `subject5marks` int NOT NULL,
+  PRIMARY KEY (`registration_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `ia1sem3`
+--
+
+INSERT INTO `ia1sem3` (`registration_id`, `department`, `subject1marks`, `subject2marks`, `subject3marks`, `subject4marks`, `subject5marks`) VALUES
+(3, 'Information Technology', 17, 11, 9, 16, 12);
 
 -- --------------------------------------------------------
 
@@ -73,7 +122,8 @@ CREATE TABLE IF NOT EXISTS `register` (
 
 INSERT INTO `register` (`firstname`, `lastname`, `registration_id`, `phone_no`, `year`, `department`, `email`, `has_account`, `username`, `sem`) VALUES
 ('matt', 'stonie', 1, 1, 'FE', 'Information Technology', 'mattstonie98380@gmail.com', 1, 'a1@sakec', 1),
-('shivam', 'prajapati', 2, 1, 'FE', 'Information Technology', 'shivamsprajapati13@gmail.com', 1, 'shivam2@sakec', 1);
+('shivam', 'prajapati', 2, 1, 'FE', 'Information Technology', 'shivamsprajapati13@gmail.com', 1, 'shivam2@sakec', 1),
+('ben', 'stokes', 3, 1, 'SE', 'Information Technology', 'abc@abc.ab', 1, 'ben', 3);
 
 -- --------------------------------------------------------
 
