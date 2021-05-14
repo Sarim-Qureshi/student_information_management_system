@@ -39,17 +39,8 @@ def addcompany():
 			inpSeatsOffered.set("")
 			inpAppliedStud.set("")
 
-
-def selectitem():
-	pass
-
-
-
-
-
-
 def company_details():
-	company = clickedCompany.get()
+	company = clickedCompany1.get()
 	bad_chars = [';', ':', '!', "*",")","(","\'",","]
 	for i in bad_chars :
 		company = company.replace(i, '')
@@ -66,22 +57,7 @@ def company_details():
 		print(e)
 	
 
-def show_stud():
-	comp = inpclickedCompany.get()
-	bad_chars = [';', ':', '!', "*",")","(","\'",","]
-	for i in bad_chars :
-		comp = comp.replace(i, '')
-	print(comp)
-	try :
-		sql = ("select * from applied where company = \"{}\"".format(comp))
-		mycursor.execute(sql)
-		res1 = mycursor.fetchall()
-		print(res1)
-		for row in res1:
-			res1 = row
-			tree.insert("",tk.END,values = row)
-	except mysql.connector.Error as e:
-		print(e)
+
 
 
 def company_remove(a):
@@ -91,7 +67,7 @@ def company_remove(a):
 	try :
 		response=messagebox.askyesno("Message Box","Remove Company {} ?".format(removeitem))
 		if response==1:
-			#DELETE FROM `placement` WHERE company = "TCS"
+			
 			sql = ("delete from placement where company = \"{}\" ".format(removeitem))
 			#val = (removeitem)
 			mycursor.execute(sql)
@@ -119,12 +95,12 @@ tabControl = ttk.Notebook(root)
 
 tab1 = Frame(tabControl, height = 450 ,width = 690)
 tab2 = Frame(tabControl, height = 450 ,width = 690)
-tab3 = Frame(tabControl, height = 450 ,width = 690)
+#tab3 = Frame(tabControl, height = 450 ,width = 690)
 #tab3 = Frame(tabControl,  height = 650 ,width = 1270)
 
 tabControl.add(tab1, text ='Add Company')
-tabControl.add(tab2, text ='Students')
-tabControl.add(tab3, text ='Remove Company')
+#tabControl.add(tab2, text ='Students')
+tabControl.add(tab2, text ='Remove Company')
 
 tabControl.place(x = 5,y = 10)
 
@@ -153,74 +129,30 @@ Entry(tab1, width = 30, textvariable = inpAppliedStud).place(x = 150, y = 180)
 Button(tab1, text = "Add",width = 30, command = addcompany).place(x = 210, y = 200)
 
 
+
+
 #Tab2----------------------------------------------------------------------
-
-
-try:
-	sql = "(select company from placement)"
-	mycursor.execute(sql)
-	res1 = mycursor.fetchall()
-	optionCompany = []
-	for row in res1:
-		optionCompany = res1
-		
-except mysql.connector.Error as e:
-	print(e)
-
-Label(tab2, text = "Add or Remove Students").place(x = 250,y= 30)
-Label(tab2, text = "Select the Company").place(x = 30, y = 50)
-
-inpclickedCompany = StringVar()
-inputCompany = OptionMenu(tab2, inpclickedCompany, *optionCompany,).place(x = 150, y = 30)
-
-Button(tab2,text = "Show STUDENTS", command = show_stud).place(x = 350 , y = 50)
-
-tree = ttk.Treeview(tab2, column=("c1", "c2", "c3","c4","c5","c6"), show='headings')
-
-tree.column("#1", anchor = tk.CENTER, width = 100)
-tree.heading("#1", text="First Name")
-
-tree.column("#2", anchor=tk.CENTER, width = 100)
-tree.heading("#2", text="Last Name")
-
-tree.column("#3", anchor=tk.CENTER, width = 100)
-tree.heading("#3", text="Register Id")
-
-tree.column("#4", anchor=tk.CENTER, width = 100)
-tree.heading("#4", text="Phone Number")
-
-tree.column("#5", anchor=tk.CENTER, width = 50)
-tree.heading("#5", text="Year")
-
-tree.column("#6", anchor=tk.CENTER, width = 50)
-tree.heading("#6", text="Email")
-
-#tree.bind('<ButtonRelease-1>')
-tree.place(x = 40, y = 100)
-
-
-#Tab3----------------------------------------------------------------------
-Label(tab3, text = "Remove Company").place(x = 250,y= 30)
+Label(tab2, text = "Remove Company").place(x = 250,y= 30)
 
 try:
-	sql = "(select company from placement)"
+	sql = "(select company from applied)"
 	mycursor.execute(sql)
 	res = mycursor.fetchall()
-	optionCompany = []
+	optionCompany1 = []
 	for row in res:
-		optionCompany = res
+		optionCompany1 = res
 		
 except mysql.connector.Error as e:
 	print(e)
 
-Label(tab3, text = "Select Company Name").place(x = 30, y = 50)
-clickedCompany = StringVar()
-inputCompany = OptionMenu(tab3, clickedCompany, *optionCompany,).place(x = 150, y = 30)
+Label(tab2, text = "Select Company Name").place(x = 30, y = 50)
+clickedCompany1 = StringVar()
+inputCompany = OptionMenu(tab2, clickedCompany1, *optionCompany1,).place(x = 150, y = 30)
 
 
-Button(tab3, text = "Show",command = company_details).place(x = 350 , y = 50)
+Button(tab2, text = "Show",command = company_details).place(x = 350 , y = 50)
 
-tree = ttk.Treeview(tab3, column=("c1", "c2", "c3","c4"), show='headings')
+tree = ttk.Treeview(tab2, column=("c1", "c2", "c3","c4"), show='headings')
 
 tree.column("#1", anchor = tk.CENTER, width = 100)
 tree.heading("#1", text="Company Name")

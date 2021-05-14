@@ -27,12 +27,10 @@ root.geometry("700x600")
 root.title("Attendance")
 
 
-status = False
+
 
 def addrecord():
 	additem = inpRegisterID.get()
-
-	
 	try :
 		sql = ("select * from register where registerId = {} ".format(additem))
 		#sql = ("select * from register where depart = \"Information Technology\"")
@@ -41,33 +39,20 @@ def addrecord():
 		for row in res:
 			res = row
 			tree.insert("", tk.END, values=row)  
-			status = True 
-		
+			
 	except mysql.connector.Error as e:
 		print(e)
 	finally :
 		inpRegisterID.set(" ")
 
-def markAttendance():
-	takeAttend = inpRegisterID.get()
-	dat = cal.get_date()
-	print(dat)
-
-	try :
-		sql = "insert into attendance values (%s, %s, %s)"
-		val = (takeAttend, 78965, dat)
-		mycursor.execute(sql,val)
-		mydb.commit()
-		print("sucess")
-
-	except mysql.connector.Error as e:
-		print("not sucess")
-		print(e)
-
 def selectItem(a):
   
     curItem = tree.focus()
     additem = tree.item(curItem)['values'][2]
+    name = tree.item(curItem)['values'][0]+" "+tree.item(curItem)['values'][1]
+    year = tree.item(curItem)['values'][4]
+    depart = tree.item(curItem)['values'][5]
+    
     subj = clickedSubj.get()
 
 
@@ -83,8 +68,8 @@ def selectItem(a):
     	try :
     		response=messagebox.askyesno("Message Box","Mark Attendance for {}".format(additem))
     		if response==1:
-    			sql = "insert into attendance values (%s, %s, %s)"
-    			val = (additem, 78965, subj)
+    			sql = "insert into attendance values (%s,%s, %s, %s,%s,%s,%s,%s)"
+    			val = (name,additem,year,depart,78965,"teacher1",dat,subj)
     			mycursor.execute(sql,val)
     			mydb.commit()
     			messagebox.showinfo("Message Box","Attendance Marked")
@@ -116,18 +101,7 @@ stdSubj = Label(root, text = " Select Subject").place(x = 420, y = 50)
 clickedSubj = StringVar()
 inputSubj = OptionMenu(root, clickedSubj, *optionSubj).place(x = 550, y = 50)
 
-
-
-
-
-
-
-
-
-
-
 cal = Calendar(root, selectmode = 'day')
-  
 cal.place(x = 80, y = 80)
 
 
