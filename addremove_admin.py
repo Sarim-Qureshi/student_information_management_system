@@ -170,15 +170,14 @@ b1.bind("<Leave>", on_leave)
 
 #Tab2----------------------------------------------------------------------
 # Label(tab2, text = "Remove Company").place(x = 250,y= 30)
-Label(tab2, text = "Remove Company", font=font2).grid(row=0, column=2, pady=10, padx=10)
+Label(tab2, text = "Remove Company", font=font2).grid(row=1, column=0, pady=10, padx=10)
 
 try:
-	sql = "(select distinct(company) from applied)"
+	sql = "(select distinct(company) from placement)"
 	mycursor.execute(sql)
 	res = mycursor.fetchall()
 	optionCompany1 = []
-	for row in res:
-	    optionCompany1 = res
+	optionCompany1 = res
 		
 except mysql.connector.Error as e:
 	print(e)
@@ -197,9 +196,11 @@ inputCompany.configure(font=font)
 
 # Button(tab2, text = "Show",command = company_details).place(x = 350 , y = 50)
 bv = Button(tab2, text = "Show",command = company_details, font=font)
-bv.grid(row=1, column=1, pady=10, padx=10)
+bv.grid(row=0, column=2, pady=10, padx=10)
 bv.bind("<Enter>", on_enterv)
 bv.bind("<Leave>", on_leavev)
+bv.configure(background='#fee227')
+
 
 
 

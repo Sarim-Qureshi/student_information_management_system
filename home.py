@@ -11,7 +11,7 @@ def handle_radio():
         elif var.get() == 'exam':
             os.system('login.py exam')
         elif var.get() == 'placement':
-            os.system('addremove_admin.py')
+            os.system('login.py placement')
 
 
 

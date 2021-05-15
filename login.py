@@ -66,7 +66,11 @@ def login():
                     ri = (str((res[0])[2])).strip()
                     os.system(f'student.py {fn} {ln} {ri}')
                 else:
-                    os.system(sys.argv[1]+'.py '+UserName)
+                    if sys.argv[1] == 'exam':
+                        os.system('exam.py '+UserName)
+                    elif sys.argv[1] == 'placement':
+                        os.system('addremove_admin.py')
+                    # os.system(sys.argv[1]+'.py '+UserName)
     except mysql.connector.Error as e:
         messagebox.showerror('Error', 'An error occured. Try again after some time')
 

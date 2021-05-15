@@ -38,6 +38,10 @@ def submit():
     if inpName.get() == "" or inpEmail.get() == "" or clickedYear.get() == "" or clickedDepart.get() == "" or inpPhone.get() == "" :
         messagebox.showwarning("Warning", "Enter all the fields")
     else:
+        import re
+        if not re.search(emailValidate, email):
+            messagebox.showerror('Invalid email', 'Enter a valid email')
+            return
         try :
             #insert the values in applied table
             sql = "insert into applied values (%s, %s, %s ,%s, %s, %s)"
@@ -63,7 +67,7 @@ def submit():
 
         except mysql.connector.Error as e :
             print(e)
-            messagebox.showinfo("Message", "Not Submitted")
+            messagebox.showerror("Error", "Cannot apply. Make sure to enter your email id")
 
         finally:
             inpName.set("")
