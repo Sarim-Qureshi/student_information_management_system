@@ -45,7 +45,7 @@ def on_leave0(e):
 
 def delete_timetable():
     try:
-        name = str(ls.get(ls.curselection())[0])
+        name = str(ls.get(ls.curselection()))
     except:
         return
     answer = messagebox.askyesno('Delete the timetable!', f'Are you sure you want to delete the timetable {name}?')
@@ -64,7 +64,7 @@ def delete_timetable():
 
 def view_timetable():
     try:
-        name = str(ls.get(ls.curselection())[0])
+        name = str(ls.get(ls.curselection()))
     except:
         return
     import os
@@ -117,7 +117,7 @@ else:
     c.execute('select name from timetable where student_visibility=1')
 result=c.fetchall()
 for x in result:
-    ls.insert(END, x)
+    ls.insert(END, x[0])
 
 db.commit()
 db.close()

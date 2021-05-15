@@ -47,7 +47,7 @@ def add_timetable():
         db = mysql.connector.connect(host='localhost', user='root', password='', database='sims')
         c = db.cursor()
         try:
-            c.execute('insert into timetable values(%s, %s, %s)', (timetable_name, data, cb.get()))
+            c.execute('insert into timetable values(%s, %s, %s)', (timetable_name.strip(), data, cb.get()))
             db.commit()
         except:
             db.rollback()
