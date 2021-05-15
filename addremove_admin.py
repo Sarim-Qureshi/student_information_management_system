@@ -173,7 +173,7 @@ b1.bind("<Leave>", on_leave)
 Label(tab2, text = "Remove Company", font=font2).grid(row=0, column=2, pady=10, padx=10)
 
 try:
-	sql = "(select company from applied)"
+	sql = "(select distinct(company) from applied)"
 	mycursor.execute(sql)
 	res = mycursor.fetchall()
 	optionCompany1 = []
