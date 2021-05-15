@@ -8,7 +8,7 @@ def exam_details():
 
 
 def placement_details():
-    pass
+    os.system('placement.py')
 
 
 def college_info():
