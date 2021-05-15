@@ -71,6 +71,8 @@ def login():
                     elif sys.argv[1] == 'placement':
                         os.system('addremove_admin.py')
                     # os.system(sys.argv[1]+'.py '+UserName)
+                    elif sys.argv[1] == 'faculty':
+                        os.system('faculty.py')
     except mysql.connector.Error as e:
         messagebox.showerror('Error', 'An error occured. Try again after some time')
 

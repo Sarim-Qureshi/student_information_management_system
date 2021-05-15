@@ -12,7 +12,7 @@ def placement_details():
 
 
 def college_info():
-    pass
+    os.system('enter_notification.py')
 
 
 def course_info():
