@@ -62,14 +62,22 @@ def submit():
             sql3 = "update placement set applied = {} where company = \"{}\"".format(int(studint), selCompany)
             mycursor.execute(sql3)
             mydb.commit()
-
+            messagebox.showinfo("Message", "Submitted")
+            top.destroy()
 
 
         except mysql.connector.Error as e :
             print(e)
-        
-        #print(name, email, year, depart, phone)
-        messagebox.showinfo("Message", "Submitted")
+            messagebox.showinfo("Message", "Not Submitted")
+
+        finally:
+            inpName.set("")
+            inpEmail.set("")
+            clickedYear.set("")
+            clickedDepart.set("")
+            inpPhone.set("")
+
+
 
 
 

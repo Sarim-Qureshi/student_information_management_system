@@ -31,9 +31,9 @@ tab2 = Frame(tabControl, height = 450 ,width = 690)
 tab3 = Frame(tabControl, height = 450 ,width = 690)
 #tab3 = Frame(tabControl,  height = 650 ,width = 1270)
 
-tabControl.add(tab1, text ='Notifications')
+#tabControl.add(tab1, text ='Notifications')
 tabControl.add(tab2, text ='Placement At a Glance')
-tabControl.add(tab3, text ='Statics')
+#tabControl.add(tab3, text ='Statics')
 
 tabControl.place(x = 5,y = 10)
 
@@ -51,6 +51,7 @@ def applyNow():
 
 def display():
 	company = clickedCompany.get()
+
 
 	#name = clickedCompany.get()
 	bad_chars = [';', ':', '!', "*",")","(","\'",","]

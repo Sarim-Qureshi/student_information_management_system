@@ -135,7 +135,7 @@ Button(tab1, text = "Add",width = 30, command = addcompany).place(x = 210, y = 2
 Label(tab2, text = "Remove Company").place(x = 250,y= 30)
 
 try:
-	sql = "(select company from applied)"
+	sql = "(select distinct(company) from applied)"
 	mycursor.execute(sql)
 	res = mycursor.fetchall()
 	optionCompany1 = []
