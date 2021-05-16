@@ -8,7 +8,7 @@ from tkinter import filedialog
 from tkinter import simpledialog
 import mysql.connector
 from tkinter import ttk
-import phonenumbers
+#import phonenumbers
 import tkinter as tk
 
 font = 'consolas 11 bold'
