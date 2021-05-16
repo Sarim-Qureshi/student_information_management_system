@@ -20,8 +20,8 @@ def handle_radio():
         #     os.system('login.py exam')
         # elif var.get() == 'placement':
         #     os.system('login.py placement')
-        # elif var.get() == 'faculty':
-        #     os.system('login.py faculty')
+        elif var.get() == 'faculty':
+            os.system('faculty_admin.py')
 
 
 def on_enter(e):
@@ -41,9 +41,9 @@ f = Frame(root, width=300, height=100, borderwidth=30, relief='groove')
 f.configure(background='#999')
 f.pack(pady=50)
 
-l = Label(f, text='Choose your role', font='consolas 22 bold', padx=15)
-l.pack(pady=(20, 15))
-l.configure(background='#999', foreground='#111')
+# l = Label(f, text='Choose your role', font='consolas 22 bold', padx=15)
+# l.pack(pady=(20, 15))
+# l.configure(background='#999', foreground='#111')
 var = StringVar()
 var.set('NA')
 r1 = Radiobutton(f, text='Student', variable=var, value='student', padx=30, font='consolas 14 bold')

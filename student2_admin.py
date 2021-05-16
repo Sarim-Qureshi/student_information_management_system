@@ -24,17 +24,17 @@ def update_stud1():
     phno = inpph.get().strip()
     year = clickedYear.get()
     depart = clickedDepart.get()
-    mail = inpmail.get().strip()
+    #mail = inpmail.get().strip()
 
-    if inpfname.get().strip() == "" or inplname.get().strip() == "" or inpph.get().strip() == "" or clickedYear.get() == "" or clickedDepart.get() == "" or inpmail.get().strip() == "":
+    if inpfname.get().strip() == "" or inplname.get().strip() == "" or inpph.get().strip() == "" or clickedYear.get() == "" or clickedDepart.get() == "" :
         messagebox.showerror("Error", "Enter all the Details")
 
     
     else:
-        if re.search(emailValidate, mail) and re.search(r'^[789]\d{9}$', phno):
+        if re.search(r'^[789]\d{9}$', phno):
             try:
-                sql = ("UPDATE register SET firstname = %s, lastname = %s, registerId = %s, phoneNumber = %s, year= %s,depart = %s, email = %s WHERE registerId = {}".format(sys.argv[1]))
-                values = (firstname,lastname,rid,phno, year, depart,mail)
+                sql = ("UPDATE register SET firstname = %s, lastname = %s, registerId = %s, phoneNumber = %s, year= %s,depart = %s WHERE registerId = {}".format(sys.argv[1]))
+                values = (firstname,lastname,rid,phno, year, depart)
                 mycursor.execute(sql,values)
                 mydb.commit()
                 messagebox.showinfo("Message","Details Updated Sucessfully")
@@ -81,13 +81,14 @@ try :
         year = res[4]
         depart = res[5]
         email = res[6]
-    fname = Label(root,text = fname).grid(row = 1, column = 2)
-    lname = Label(root,text = lname).grid(row = 2, column = 2)
-    rgid = Label(root,text = rid).grid(row = 3, column = 2)
-    pho = Label(root,text = phone).grid(row = 4, column = 2)
-    yr = Label(root, text = year).grid(row = 5, column = 2)
-    dep = Label(root, text = depart).grid(row = 6, column = 2)
-    mail = Label(root, text = email).grid(row = 7, column =2)
+
+    Label(root,text = fname).grid(row = 1, column = 2)
+    Label(root,text = lname).grid(row = 2, column = 2)
+    Label(root,text = rid).grid(row = 3, column = 2)
+    Label(root,text = phone).grid(row = 4, column = 2)
+    Label(root, text = year).grid(row = 5, column = 2)
+    Label(root, text = depart).grid(row = 6, column = 2)
+    Label(root, text = email).grid(row = 7, column =2)
 
 except mysql.connector.Error as e:
     messagebox.showerror("Error", "Something went wrong !!")
@@ -131,8 +132,8 @@ clickedDepart = StringVar()
 inputstdDepart = OptionMenu(root, clickedDepart, *optionDepart)
 inputstdDepart.grid(row= 15, column = 2)
 
-inpmail = StringVar()
-Entry(root,width = 30, textvariable = inpmail).grid(row = 16, column = 2)
+
+Label(root,width = 30, text = email).grid(row = 16, column = 2)
 
 Button(root, text = "Update Details",width = 30,command = update_stud1).grid(row = 18, column = 2)
 
