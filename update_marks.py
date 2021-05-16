@@ -55,7 +55,7 @@ f1 = Frame(root, width=600, height=300, borderwidth=10, relief='groove')
 f1.configure(background='#999')
 f1.pack(pady=(50, 20), padx=(60, 5), anchor='c')
 
-optionExam = ["Internal Assessment 1", "Internal Assessment 2", "Semester"]
+optionExam = ["Internal Assessment 1", "Internal Assessment 2"]
 stdExam = Label(f1, text="Exam", font='consolas 20 bold')
 stdExam.grid(row=1, column=0, pady=(15, 15), padx=(70, 20))
 stdExam.configure(background='#999')

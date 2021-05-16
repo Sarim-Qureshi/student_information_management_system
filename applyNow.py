@@ -8,11 +8,20 @@ from tkinter import filedialog
 from tkinter import simpledialog
 import mysql.connector
 from tkinter import ttk
+import phonenumbers
 import tkinter as tk
 
 font = 'consolas 11 bold'
 font2 = 'consolas 14 bold'
 
+def on_enter0(e):
+    e.widget['background'] = '#033500'
+    e.widget['foreground'] = 'white'
+
+
+def on_leave0(e):
+    e.widget['background'] = '#3cb043'
+    e.widget['foreground'] = 'black'
 
 
 mydb = mysql.connector.connect(
@@ -42,6 +51,12 @@ def submit():
         if not re.search(emailValidate, email):
             messagebox.showerror('Invalid email', 'Enter a valid email')
             return
+        import re
+        matched = re.search(r'^[789]\d{9}$', inpPhone.get().strip())
+        if matched is None:
+            messagebox.showerror('Invalid number', 'Enter a valid phone number')
+            return
+
         try :
             #insert the values in applied table
             sql = "insert into applied values (%s, %s, %s ,%s, %s, %s)"
@@ -141,7 +156,11 @@ inpPhone = StringVar()
 Entry(top, width = 30, textvariable = inpPhone, font=font).grid(row=5, column=1, pady=10, padx=10)
 
 # Button(top, text = "Submit", width = 30, command = submit).place(x = 150, y = 200)
-Button(top, text = "Submit", width = 30, command = submit, font=font).grid(row=6, column=1, pady=10, padx=10)
+b = Button(top, text = "Submit", width = 30, command = submit, font=font, cursor='hand2')
+b.grid(row=6, column=1, pady=10, padx=10)
+b.configure(background='#3cb043', font=font)
+b.bind("<Enter>", on_enter0)
+b.bind("<Leave>", on_leave0)
 
 
 top.mainloop()

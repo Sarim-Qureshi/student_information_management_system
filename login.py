@@ -17,6 +17,16 @@ def on_leave(e):
     e.widget['foreground'] = 'black'
 
 
+def on_enterc(e):
+    e.widget['background'] = '#bbb'
+    e.widget['foreground'] = '#222'
+
+
+def on_leavec(e):
+    e.widget['background'] = '#222'
+    e.widget['foreground'] = '#bbb'
+
+
 def on_enter2(e):
     e.widget['background'] = '#033500'
     e.widget['foreground'] = 'white'
@@ -34,6 +44,10 @@ def on_leave2(e):
 db = mysql.connector.connect(host="localhost", user="root", password="", database="SIMS")
 cursor = db.cursor()
 
+
+
+def change_pass():
+    os.system('change_password.py')
 
 def login():
     UserName = name.get()
@@ -115,22 +129,32 @@ password_var = StringVar()
 password_entry = Entry(f1, textvariable=password_var, show='*', font='consolas 17 bold')
 password_entry.grid(row=1, column=1, pady=(20, 20), padx=(20, 70))
 
+
 b2 = Button(f1, text='Login', command=login, cursor='hand2', font='consolas 18 bold', pady=1, padx=10)
 b2.bind("<Enter>", on_enter)
 b2.bind("<Leave>", on_leave)
 b2.grid(row=2, column=0, columnspan=2, pady=(20, 10), padx=(70, 70))
 b2.configure(background='#0277bd')
 
+
+
 if sys.argv[1] == 'student':
+    b2 = Button(f1, text='Change password', command=change_pass, cursor='hand2', font='consolas 15 bold', pady=1,
+                padx=10)
+    b2.bind("<Enter>", on_enterc)
+    b2.bind("<Leave>", on_leavec)
+    b2.grid(row=3, column=0, columnspan=2, pady=(20, 10), padx=(70, 70))
+    b2.configure(background='#222', foreground='#bbb')
+
     reg_label = Label(f1, text="Do not have an account?\nClick register button below to create one.",
                       font='consolas 17 bold')
     reg_label.configure(background='#999', foreground='#900d09')
-    reg_label.grid(row=3, column=0, columnspan=2, pady=(10, 10), padx=(70, 70))
+    reg_label.grid(row=4, column=0, columnspan=2, pady=(10, 10), padx=(70, 70))
 
     b3 = Button(f1, text='Register', command=register, cursor='hand2', font='consolas 18 bold', pady=1, padx=10)
     b3.bind("<Enter>", on_enter2)
     b3.bind("<Leave>", on_leave2)
-    b3.grid(row=4, column=0, columnspan=2, pady=(10, 20), padx=(70, 70))
+    b3.grid(row=5, column=0, columnspan=2, pady=(10, 20), padx=(70, 70))
     b3.configure(background='#3cb043')
 
 root.mainloop()

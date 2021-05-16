@@ -48,9 +48,13 @@ def verify():
 
             mycursor = mydb.cursor()
 
-            mycursor.execute('select has_account from register where email=%s', (EmailId,))
-            res = mycursor.fetchall()
-            ha = int((res[0])[0])
+            try:
+                mycursor.execute('select has_account from register where email=%s', (EmailId,))
+                res = mycursor.fetchall()
+                ha = int((res[0])[0])
+            except Exception as e:
+                print(e)
+                messagebox.showerror('Error', 'Your credentials are invalid')
             mydb.close()
             if ha==1:
                 messagebox.showwarning("Account exists", "You already have an account. If you want to"
@@ -58,7 +62,7 @@ def verify():
                                                    " <office.sakec@sakec.ac.in>")
                 return
             else:
-                register(firstName, lastName, RegisterId, PhoneNumber, SelYear, SelDepart, EmailId)
+                register(firstName, lastName, RegisterId, PhoneNumber, SelYear, SelDepart, EmailId, Sem)
         else:
             messagebox.showerror('Invalid Email', 'Please enter a valid email id')
 
@@ -83,7 +87,7 @@ def register(firstName, lastName, RegisterId, PhoneNumber, SelYear, SelDepart, E
         yr = (res[0])[4]
         dep = (res[0])[5]
         email = (res[0])[6]
-        sem = (res[0])[9]
+        sem = str((res[0])[9])
 
         if firstName != fn or lastName != ln or RegisterId != ri or PhoneNumber != pn or SelYear != yr or SelDepart != dep or EmailId != email or Sem != sem:
             messagebox.showerror('Invalid credentials', 'Your credentials are invalid')
