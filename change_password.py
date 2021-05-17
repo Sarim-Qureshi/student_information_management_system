@@ -28,31 +28,61 @@ def change_password():
 
 
     if len(UserName.strip()) == 0 or len(old_PassWord.strip()) == 0 or len(new_PassWord.strip()) == 0 or len(newc_PassWord.strip()) == 0:
-        messagebox.showinfo('Empty credentials', 'Enter the credentials to login')
+        messagebox.showinfo('Empty credentials', 'Enter the credentials to change password')
         return
-    try:
-        db = mysql.connector.connect(host="localhost", user="root", password="", database="SIMS")
-        cursor = db.cursor()
-        cursor.execute("select * from login where username = %s and password = %s", (UserName, old_PassWord,))
-        res = cursor.fetchall()
+    if sys.argv[1] == 'student':
+        try:
+            db = mysql.connector.connect(host="localhost", user="root", password="", database="SIMS")
+            cursor = db.cursor()
+            cursor.execute("select * from login where username = %s and password = %s", (UserName, old_PassWord,))
+            res = cursor.fetchall()
 
-        if len(res) == 0:
-            messagebox.showerror('Invalid credentials', 'Enter the correct username and password')
-            return
-        if not new_PassWord == newc_PassWord:
-            messagebox.showerror('Error', 'The new passwords do not match')
-            return
-        cursor.execute("update login set password = %s where username = %s and password = %s", (new_PassWord, UserName, old_PassWord,))
-        db.commit()
-        db.close()
-        messagebox.showinfo('Password changed', f'{UserName}, your password was changed')
-        name.set("")
-        password_var_old.set("")
-        password_var_new.set("")
-        password_var_new_confirm.set("")
+            if len(res) == 0:
+                messagebox.showerror('Invalid credentials', 'Enter the correct username and password')
+                return
+            if not new_PassWord == newc_PassWord:
+                messagebox.showerror('Error', 'The new passwords do not match')
+                return
+            cursor.execute("update login set password = %s where username = %s and password = %s", (new_PassWord, UserName, old_PassWord,))
+            db.commit()
+            db.close()
+            messagebox.showinfo('Password changed', f'{UserName}, your password was changed')
+            name.set("")
+            password_var_old.set("")
+            password_var_new.set("")
+            password_var_new_confirm.set("")
 
-    except mysql.connector.Error as e:
-        messagebox.showerror('Error', 'Your password could not be changed')
+        except mysql.connector.Error as e:
+            messagebox.showerror('Error', 'Your password could not be changed')
+
+    elif sys.argv[1] == 'faculty':
+        try:
+            db = mysql.connector.connect(host="localhost", user="root", password="", database="SIMS")
+            cursor = db.cursor()
+            cursor.execute("select * from login where username = %s and password = %s", (UserName, old_PassWord,))
+            res = cursor.fetchall()
+
+            if len(res) == 0:
+                messagebox.showerror('Invalid credentials', 'Enter the correct username and password')
+                return
+            if not new_PassWord == newc_PassWord:
+                messagebox.showerror('Error', 'The new passwords do not match')
+                return
+            q1 = "update login set password = %s where username = %s and password = %s"
+            q2 = "update faculty set password = %s where userid = %s and password = %s"
+            cursor.execute(q1, (new_PassWord, UserName, old_PassWord,))
+            db.commit()
+            cursor.execute(q2, (new_PassWord, UserName, old_PassWord,))
+            db.commit()
+            db.close()
+            messagebox.showinfo('Password changed', f'{UserName}, your password was changed')
+            name.set("")
+            password_var_old.set("")
+            password_var_new.set("")
+            password_var_new_confirm.set("")
+
+        except mysql.connector.Error as e:
+            messagebox.showerror('Error', 'Your password could not be changed')
 
 
 root = Tk()

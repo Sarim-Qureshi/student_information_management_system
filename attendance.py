@@ -50,7 +50,7 @@ def addrecord():
         mycursor = mydb.cursor()
         # sql = ("select * from register where registerId = {} ".format(additem))
         sql = ("select firstname, lastname, registration_id, phone_no, year, department, sem"
-               " from register where registration_id = {} and sem = {}".format(additem, sys.argv[1]))
+               " from register where registration_id = {} and sem = {}".format(additem, sys.argv[2]))
         # sql = ("select * from register where depart = \"Information Technology\"")
         mycursor.execute(sql)
         res = mycursor.fetchall()
@@ -72,7 +72,7 @@ def selectItem(a):
     # year = tree.item(curItem)['values'][4]
     # depart = tree.item(curItem)['values'][5]
     sid = tree.item(curItem)['values'][2]
-    fid = 11
+    fid = sys.argv[1].strip()
     dept = tree.item(curItem)['values'][5]
     sem = tree.item(curItem)['values'][6]
 
@@ -134,7 +134,7 @@ b.configure(background='#3cb043')
 import sys
 dept = ''
 for index, x in enumerate(sys.argv):
-    if index > 1:
+    if index > 2:
         dept += f'{x} '
 
 dept = dept.strip()
@@ -146,12 +146,12 @@ mydb = mysql.connector.connect(
     database="sims"
 )
 mycursor = mydb.cursor()
-if sys.argv[1] == "1" or sys.argv[1] == "2":
-    mycursor.execute(f"select * from sem{sys.argv[1]}_subjects")
+if sys.argv[2] == "1" or sys.argv[2] == "2":
+    mycursor.execute(f"select * from sem{sys.argv[2]}_subjects")
     res = mycursor.fetchall()
     optionSubj = res[0]
 else:
-    mycursor.execute("select * from subjects where sem=%s and department=%s", (sys.argv[1], dept, ))
+    mycursor.execute("select * from subjects where sem=%s and department=%s", (sys.argv[2], dept, ))
     res = mycursor.fetchall()
     print(res)
     optionSubj = (res[0])[2:]

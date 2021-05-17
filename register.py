@@ -37,7 +37,7 @@ def verify():
         messagebox.showwarning("Empty fields", "Enter all the fields")
         return
     else:
-        if re.search(emailValidate, EmailId):
+        if re.search(emailValidate, EmailId) and re.search(r'^[789]\d{9}$', PhoneNumber):
 
             mydb = mysql.connector.connect(
                 host="localhost",
@@ -64,7 +64,7 @@ def verify():
             else:
                 register(firstName, lastName, RegisterId, PhoneNumber, SelYear, SelDepart, EmailId, Sem)
         else:
-            messagebox.showerror('Invalid Email', 'Please enter a valid email id')
+            messagebox.showerror('Message', 'Ensure that phone number and email ID are valid')
 
 
 

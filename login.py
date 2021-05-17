@@ -47,7 +47,7 @@ cursor = db.cursor()
 
 
 def change_pass():
-    os.system('change_password.py')
+    os.system('change_password.py student')
 
 def login():
     UserName = name.get()
@@ -86,7 +86,9 @@ def login():
                         os.system('addremove_admin.py')
                     # os.system(sys.argv[1]+'.py '+UserName)
                     elif sys.argv[1] == 'faculty':
-                        os.system('faculty.py')
+                        os.system(f'faculty.py {UserName}')
+                    elif sys.argv[1] == 'admin':
+                        os.system('admin.py')
     except mysql.connector.Error as e:
         messagebox.showerror('Error', 'An error occured. Try again after some time')
 

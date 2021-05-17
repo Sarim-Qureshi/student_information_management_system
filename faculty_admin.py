@@ -27,7 +27,7 @@ root.geometry("1000x500+0+0")
 root.resizable(False, False)
 root.title('Student Information Management System')
 root.configure(background='#222')
-head = Label(root, text='Faculty', font='consolas 30 bold')
+head = Label(root, text='Modify Faculty', font='consolas 30 bold')
 head.pack(pady=(35, 0))
 head.configure(background='#222', foreground='white')
 

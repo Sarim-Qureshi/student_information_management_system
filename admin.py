@@ -5,21 +5,18 @@ import mysql.connector
 
 
 root = Tk()
-root.geometry("1250x650")
+root.geometry("1100x600+0+0")
 root.title("Admin Section")
 root.resizable(False,False)
+root.configure(background='#222')
 
 
 def handle_radio():
     if var.get() == 'NA':
-        messagebox.showinfo('Choose your role', 'You have not specified your role')
+        return
     else:
         if var.get() == 'student':
             os.system('student_admin.py')
-        # elif var.get() == 'exam':
-        #     os.system('login.py exam')
-        # elif var.get() == 'placement':
-        #     os.system('login.py placement')
         elif var.get() == 'faculty':
             os.system('faculty_admin.py')
 
@@ -33,7 +30,7 @@ def on_leave(e):
     b['background'] = '#3cb043'
     b['foreground'] = 'black'
 
-head = Label(root, text='Choose the option to Edit', font='consolas 30 bold')
+head = Label(root, text='Choose the role to Edit', font='consolas 30 bold')
 head.pack(pady=(35, 0))
 head.configure(background='#222', foreground='white')
 

@@ -20,8 +20,8 @@ def attendance():
     sem = clickedSem.get().strip()
     dept = clickedDepart.get().strip()
 
-
-    os.system(f'attendance.py {sem} {dept}')
+    import sys
+    os.system(f'attendance.py {sys.argv[1]} {sem} {dept}')
 
 
     # if sys.argv[1] != 'faculty':
