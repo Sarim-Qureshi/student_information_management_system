@@ -17,13 +17,10 @@ def handle_radio():
     else:
         if var.get() == 'student':
             os.system('student_admin.py')
-<<<<<<< HEAD
-=======
-        # elif var.get() == 'exam':
-        #     os.system('login.py exam')
+        elif var.get() == 'exam':
+            os.system('exam_admin.py exam')
         elif var.get() == 'placement':
             os.system('placement_admin.py ')
->>>>>>> 80e3ca961969cabab74bd690fc0c181eff30db9c
         elif var.get() == 'faculty':
             os.system('faculty_admin.py')
 
