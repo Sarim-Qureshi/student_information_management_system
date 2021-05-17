@@ -18,8 +18,8 @@ def handle_radio():
             os.system('student_admin.py')
         # elif var.get() == 'exam':
         #     os.system('login.py exam')
-        # elif var.get() == 'placement':
-        #     os.system('login.py placement')
+        elif var.get() == 'placement':
+            os.system('placement_admin.py ')
         elif var.get() == 'faculty':
             os.system('faculty_admin.py')
 
