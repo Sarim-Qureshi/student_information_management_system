@@ -23,6 +23,10 @@ def marks():
     os.system(f'update_marks.py {sys.argv[3]}')
 
 
+def attendance():
+    os.system(f'view_attendance.py {sys.argv[3]}')
+
+
 def on_enter(e):
     e.widget['background'] = '#051094'
     e.widget['foreground'] = 'white'
@@ -38,7 +42,7 @@ root.geometry("1000x690+0+0")
 root.resizable(False, False)
 root.configure(background='#222')
 root.title('Student Information Management System')
-head = Label(root, text=f'Welcome {sys.argv[1]} {sys.argv[2]}\nwhat would you like to check?', font='consolas 30 bold')
+head = Label(root, text=f'Welcome {sys.argv[1]} {sys.argv[2]}, what would you like to check?', font='consolas 24 bold')
 head.pack(pady=(30, 0))
 head.configure(background='#222', foreground='white')
 
@@ -86,5 +90,14 @@ b5.bind("<Enter>", on_enter)
 b5.bind("<Leave>", on_leave)
 b5.pack()
 b5.configure(background='#0277bd')
+
+f6 = Frame(root, width=300, height=70, borderwidth=10, relief='groove')
+f6.configure(background='#999')
+f6.pack(pady=(20, 20), anchor='c')
+b6 = Button(f6, text='Check attendance', command=attendance, cursor='hand2', font='consolas 14 bold', pady=1, padx=10)
+b6.bind("<Enter>", on_enter)
+b6.bind("<Leave>", on_leave)
+b6.pack()
+b6.configure(background='#0277bd')
 
 root.mainloop()

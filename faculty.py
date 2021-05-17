@@ -3,7 +3,7 @@ import os
 
 
 def attendance():
-    os.system('')
+    os.system('attendance0.py')
 
 
 def notification():
