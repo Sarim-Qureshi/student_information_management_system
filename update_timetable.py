@@ -46,6 +46,7 @@ def add_timetable():
             timetable_name = image_name.get()
         db = mysql.connector.connect(host='localhost', user='root', password='', database='sims')
         c = db.cursor()
+        print(len(data))
         try:
             c.execute('insert into timetable values(%s, %s, %s)', (timetable_name.strip(), data, cb.get()))
             db.commit()

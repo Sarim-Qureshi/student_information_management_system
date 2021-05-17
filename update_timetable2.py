@@ -73,7 +73,7 @@ def view_timetable():
 
 def edit_timetable():
     try:
-        name = str(ls.get(ls.curselection())[0])
+        name = str(ls.get(ls.curselection()))
     except:
         return
     import os

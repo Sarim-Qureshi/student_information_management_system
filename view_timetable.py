@@ -29,11 +29,12 @@ cursor.execute('select image from timetable where name=%s', (tname, ))
 
 photo = cursor.fetchone()[0]
 # write blob data into a file
+print(len(photo))
 write_file(photo, 'new.jpg')
 cursor.close()
 cnx.close()
 
-img = Image.open('new.jpg')
+img = Image.open('new.jpg').resize((750, 750), resample=0)
 photo = ImageTk.PhotoImage(img)
 lab = Label(image=photo)
 lab.pack()

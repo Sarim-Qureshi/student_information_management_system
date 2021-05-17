@@ -6,7 +6,14 @@ from tkinter import messagebox, filedialog
 from PIL import Image, ImageTk
 from mysql.connector import MySQLConnection
 import mysql.connector
+import sys
+tname = ''
+for i, x in enumerate(sys.argv):
+    if i>0:
+        tname += x+" "
 
+tname = tname.strip()
+print(tname)
 
 def on_enter(e):
     e.widget['background'] = '#051094'
@@ -49,13 +56,13 @@ def edit_timetable():
         c = db.cursor()
         c.execute('select * from timetable where name=%s', (image_name.get(), ))
         c.fetchall()
-        if c.rowcount >= 1 and sys.argv[1] != image_name.get():
+        if c.rowcount >= 1 and tname != image_name.get():
             messagebox.showerror('Error!', 'Timetable with same name  already exists. Enter a different name')
             return
         else:
             timetable_name = image_name.get()
             try:
-                c.execute('update timetable set name=%s, image=%s, student_visibility=%s where name=%s', (timetable_name, data, cb.get(), sys.argv[1]))
+                c.execute('update timetable set name=%s, image=%s, student_visibility=%s where name=%s', (timetable_name, data, cb.get(), tname))
                 db.commit()
                 messagebox.showinfo('Success', 'Your timetable was edited successfully')
             except:
@@ -77,13 +84,13 @@ def edit_timetable_simple():
         c.execute('select * from timetable where name=%s', (image_name.get(), ))
         c.fetchall()
         print(c.rowcount)
-        if c.rowcount >= 1 and sys.argv[1] != image_name.get():
+        if c.rowcount >= 1 and tname != image_name.get():
             messagebox.showerror('Error!', 'Timetable with same name  already exists. Enter a different name')
             return
         else:
             timetable_name = image_name.get()
             try:
-                c.execute('update timetable set name=%s, student_visibility=%s where name=%s', (timetable_name, cb.get(), sys.argv[1]))
+                c.execute('update timetable set name=%s, student_visibility=%s where name=%s', (timetable_name, cb.get(), tname))
                 db.commit()
                 messagebox.showinfo('Success', 'Your timetable was edited successfully')
             except:
@@ -110,13 +117,13 @@ name.grid(row=0, column=0, pady=(45, 40), padx=(70, 20))
 name.configure(background='#999')
 
 image_name = StringVar()
-image_name.set(sys.argv[1])
+image_name.set(tname)
 image_entry = Entry(f1, textvariable=image_name, font='consolas 17 bold')
 image_entry.grid(row=0, column=1, pady=(45, 40), padx=(20, 70))
 
 db = mysql.connector.connect(host='localhost', user='root', password='', database='sims')
 c = db.cursor()
-c.execute('select student_visibility from timetable where name=%s', (sys.argv[1], ))
+c.execute('select student_visibility from timetable where name=%s', (tname, ))
 result=c.fetchall()
 for x in result:
     flag = x
