@@ -106,6 +106,7 @@ root.configure(background='#222')
 root.title('Student Information Management System')
 head = Label(root, text='Update timetable', font='consolas 30 bold')
 head.pack(pady=(35, 0))
+root.wm_iconbitmap('zicon.ico')
 head.configure(background='#222', foreground='white')
 
 f1 = Frame(root, width=800, height=500, borderwidth=10, relief='groove')

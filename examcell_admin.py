@@ -23,6 +23,7 @@ def on_leave(e):
 root = Tk()
 root.geometry("1000x500+0+0")
 root.resizable(False, False)
+root.wm_iconbitmap('zicon.ico')
 root.title('Student Information Management System')
 root.configure(background='#222')
 head = Label(root, text='Modify Exam Section Staff', font='consolas 30 bold')

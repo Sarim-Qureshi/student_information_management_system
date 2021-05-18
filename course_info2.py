@@ -26,6 +26,7 @@ for x in sys.argv:
 
 root = Tk()
 root.geometry("1000x600+0+0")
+root.wm_iconbitmap('zicon.ico')
 root.resizable(False, False)
 root.configure(background='#222')
 root.title('Student Information Management System')

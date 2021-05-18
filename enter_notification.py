@@ -4,8 +4,8 @@ from tkinter import messagebox, Scrollbar, Text, INSERT
 
 master = tk.Tk()
 
-master.title("Notifications")
- 
+master.title("Student Information Management System")
+master.wm_iconbitmap('zicon.ico')
 master.geometry("640x400+50+50")
 master.configure(background='#222')
 master.resizable(False, False)

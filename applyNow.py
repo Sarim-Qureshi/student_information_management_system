@@ -97,8 +97,10 @@ def submit():
 
 
 top = Tk()
-top.title("Apply Now")
+top.title("Student Information Management System")
 top.geometry("500x500")
+top.wm_iconbitmap('zicon.ico')
+
 
 
 # Label(top, text = "You are Applying for {}".format(sys.argv[1],)).place(x = 30, y = 0)

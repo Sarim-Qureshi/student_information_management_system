@@ -34,7 +34,8 @@ font2 = 'consolas 11 bold'
 
 root = Tk()
 root.geometry("810x670+0+0")
-root.title("Attendance")
+root.title("Student Information Management System")
+root.wm_iconbitmap('zicon.ico')
 
 
 def addrecord():

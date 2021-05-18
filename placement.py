@@ -40,7 +40,9 @@ def on_leave(e):
 
 
 root = Tk()
-root.title("Student  Placement Zone")
+root.title("Student Information Management System")
+root.wm_iconbitmap('zicon.ico')
+root.resizable(False, False)
 root.geometry("700x500")
 
 tabControl = ttk.Notebook(root)

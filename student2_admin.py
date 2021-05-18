@@ -73,6 +73,7 @@ root = Tk()
 root.geometry("1200x600+0+0")
 root.title("Student Details")
 root.resizable(False,False)
+root.wm_iconbitmap('zicon.ico')
 
 Label(root,text = "Old Details", font=font, pady=30, padx=10).grid(row = 0, column = 1)
 

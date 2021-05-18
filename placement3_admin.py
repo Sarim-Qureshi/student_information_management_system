@@ -34,6 +34,7 @@ font = 'consolas 12 bold'
 root = Tk()
 root.geometry("1200x600+0+0")
 root.title("Placement Officer Details")
+root.wm_iconbitmap('zicon.ico')
 root.resizable(False, False)
 
 emailValidate = '^[a-z0-9]+[\._]?[a-z0-9]+[@]\w+[.]\w{2,3}$'

@@ -89,6 +89,7 @@ root = Tk()
 root.geometry("1000x670+0+0")
 root.resizable(False, False)
 root.title('Student Information Management System')
+root.wm_iconbitmap('zicon.ico')
 root.configure(background='#222')
 if sys.argv[1] != 'student':
     head = Label(root, text='Update timetables', font='consolas 30 bold')

@@ -54,6 +54,7 @@ mycursor = mydb.cursor()
 root = Tk()
 root.geometry("650x650+0+0")
 root.title("Modify Faculty Details")
+root.wm_iconbitmap('zicon.ico')
 root.resizable(False, False)
 
 

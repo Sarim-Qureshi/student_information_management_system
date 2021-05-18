@@ -55,6 +55,7 @@ root = Tk()
 root.geometry("860x650+0+0")
 root.title("Student Details")
 root.resizable(False, False)
+root.wm_iconbitmap('zicon.ico')
 
 font = 'consolas 12 bold'
 

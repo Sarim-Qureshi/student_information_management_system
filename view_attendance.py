@@ -73,14 +73,15 @@ def view_att():
 root = Tk()
 root.geometry("770x500")
 root.resizable(False,False)
-root.title("View Attendance")
+root.title("Student Information Management System")
+root.wm_iconbitmap('zicon.ico')
 
 Label(root, text = "Select the Date", font=font2).place(x = 20, y = 30)
 
 cal = Calendar(root, selectmode = 'day')
 cal.place(x = 200, y = 30)
 
-b = Button(root, text = "Show",command = view_att, font=font2)
+b = Button(root, text = "Show",command = view_att, font=font2, cursor='hand2')
 b.place(x = 500, y = 30)
 b.bind("<Enter>", on_enter2)
 b.bind("<Leave>", on_leave2)

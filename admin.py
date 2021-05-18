@@ -8,6 +8,7 @@ root = Tk()
 root.geometry("1100x600+0+0")
 root.title("Admin Section")
 root.resizable(False,False)
+root.wm_iconbitmap('zicon.ico')
 root.configure(background='#222')
 
 

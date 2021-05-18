@@ -43,6 +43,7 @@ def attendance():
 root = Tk()
 root.geometry("1100x550+0+0")
 root.resizable(False, False)
+root.wm_iconbitmap('zicon.ico')
 root.title('Student Information Management System')
 root.configure(background='#222')
 # if sys.argv[1] == 'faculty':

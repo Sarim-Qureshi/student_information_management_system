@@ -165,6 +165,7 @@ def register(firstName, lastName, RegisterId, PhoneNumber, SelYear, SelDepart, E
 root = Tk()
 root.geometry("1300x670+0+0")
 root.resizable(False, False)
+root.wm_iconbitmap('zicon.ico')
 root.title('Student Information Management System')
 root.configure(background='#222')
 

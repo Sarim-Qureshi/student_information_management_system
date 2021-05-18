@@ -36,6 +36,7 @@ def on_leave(e):
 
 root = Tk()
 root.geometry("730x500+0+0")
+root.wm_iconbitmap('zicon.ico')
 root.title("Exam Officer Details")
 root.resizable(False, False)
 

@@ -29,6 +29,7 @@ root.geometry("1000x670+0+0")
 root.resizable(False, False)
 root.title('Student Information Management System')
 root.configure(background='#222')
+root.wm_iconbitmap('zicon.ico')
 # if sys.argv[1] != 'student':
 head = Label(root, text='Update marks', font='consolas 30 bold')
 # else:

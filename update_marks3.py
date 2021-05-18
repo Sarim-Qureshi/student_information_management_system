@@ -33,6 +33,7 @@ root = Tk()
 root.geometry("1000x670+0+0")
 root.resizable(False, False)
 root.title('Student Information Management System')
+root.wm_iconbitmap('zicon.ico')
 root.configure(background='#222')
 if sys.argv[-1] != '0':
     head = Label(root, text=f'Update marks for {sys.argv[3]} {sys.argv[4]}', font='consolas 30 bold')

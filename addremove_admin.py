@@ -104,8 +104,10 @@ def company_remove(a):
 
 
 root = Tk()
-root.title("Officer Add and Remove Section")
+root.title("Student Information Management System")
 root.geometry("700x500+20+20")
+root.wm_iconbitmap('zicon.ico')
+
 
 tabControl = ttk.Notebook(root)
 

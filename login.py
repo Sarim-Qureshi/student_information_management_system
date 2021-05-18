@@ -106,6 +106,7 @@ def register():
 root = Tk()
 root.geometry("1000x670+0+0")
 root.resizable(False, False)
+root.wm_iconbitmap('zicon.ico')
 root.configure(background='#222')
 root.title('Student Information Management System')
 head = Label(root, text='Login Page', font='consolas 30 bold')

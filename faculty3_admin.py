@@ -27,6 +27,7 @@ def on_leave(e):
 root = Tk()
 root.geometry("1200x600+0+0")
 root.title("Faculty Details")
+root.wm_iconbitmap('zicon.ico')
 root.resizable(False, False)
 
 emailValidate = '^[a-z0-9]+[\._]?[a-z0-9]+[@]\w+[.]\w{2,3}$'
