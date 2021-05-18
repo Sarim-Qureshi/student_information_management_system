@@ -13,6 +13,7 @@ import sys
 # )
 font = 'consolas 12 bold'
 
+
 def on_enter(e):
     e.widget['background'] = '#b29700'
     e.widget['foreground'] = 'white'
@@ -22,8 +23,9 @@ def on_leave(e):
     e.widget['background'] = '#a8a9ad'
     e.widget['foreground'] = 'black'
 
+
 root = Tk()
-root.geometry("1100x650+0+0")
+root.geometry("1200x600+0+0")
 root.title("Faculty Details")
 root.resizable(False, False)
 

@@ -83,7 +83,7 @@ def login():
                     if sys.argv[1] == 'exam':
                         os.system('exam.py '+UserName)
                     elif sys.argv[1] == 'placement':
-                        os.system('addremove_admin.py')
+                        os.system('placement0.py')
                     # os.system(sys.argv[1]+'.py '+UserName)
                     elif sys.argv[1] == 'faculty':
                         os.system(f'faculty.py {UserName}')

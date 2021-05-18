@@ -37,7 +37,8 @@ def inert():
     try:
         s1= e1.get()
         s2= e2.get()
-        c = MySQLdb.connect('localhost', 'root', '', 'python')
+        # c = MySQLdb.connect('localhost', 'root', '', 'python')
+        c = MySQLdb.connect('localhost', 'root', '', 'sims')
         s = c.cursor()
         s.execute("""insert into message(msgno, notice) values (%s,%s)""",(s2,s1))
         c.commit()
@@ -60,7 +61,8 @@ if isFaculty:
     b.configure(background='#0277bd')
     b.place(x=200, y=250)
 else:
-    c = MySQLdb.connect('localhost', 'root', '', 'python')
+    # c = MySQLdb.connect('localhost', 'root', '', 'python')
+    c = MySQLdb.connect('localhost', 'root', '', 'sims')
     s = c.cursor()
     s.execute("""select * from message order by msgno""")
     result = s.fetchall()

@@ -84,6 +84,35 @@ def change_password():
         except mysql.connector.Error as e:
             messagebox.showerror('Error', 'Your password could not be changed')
 
+    elif sys.argv[1] == 'placement':
+        try:
+            db = mysql.connector.connect(host="localhost", user="root", password="", database="SIMS")
+            cursor = db.cursor()
+            cursor.execute("select * from login where username = %s and password = %s", (UserName, old_PassWord,))
+            res = cursor.fetchall()
+
+            if len(res) == 0:
+                messagebox.showerror('Invalid credentials', 'Enter the correct username and password')
+                return
+            if not new_PassWord == newc_PassWord:
+                messagebox.showerror('Error', 'The new passwords do not match')
+                return
+            q1 = "update login set password = %s where username = %s and password = %s"
+            q2 = "update placementofficer set password = %s where username = %s and password = %s"
+            cursor.execute(q1, (new_PassWord, UserName, old_PassWord,))
+            db.commit()
+            cursor.execute(q2, (new_PassWord, UserName, old_PassWord,))
+            db.commit()
+            db.close()
+            messagebox.showinfo('Password changed', f'{UserName}, your password was changed')
+            name.set("")
+            password_var_old.set("")
+            password_var_new.set("")
+            password_var_new_confirm.set("")
+
+        except mysql.connector.Error as e:
+            messagebox.showerror('Error', 'Your password could not be changed')
+
 
 root = Tk()
 root.geometry("1000x670+0+0")

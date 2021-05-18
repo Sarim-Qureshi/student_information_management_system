@@ -133,7 +133,7 @@ Label(root, text="Enter Registration Id of the student", font=font, pady=10, pad
 inp = StringVar()
 regIdinp = Entry(root, textvariable=inp, font=font).grid(row=0, column=1, pady=10, padx=10)
 
-showInfo = Button(root, text="Show Details", command=show_dt, font=font)
+showInfo = Button(root, text="Show Details", command=show_dt, font=font, cursor='hand2')
 showInfo.grid(row=0, column=2, padx=10, pady=10)
 showInfo.bind("<Enter>", on_enterv)
 showInfo.bind("<Leave>", on_leavev)
@@ -147,14 +147,14 @@ Label(root, text="Department", font=font).grid(row=5, column=0, pady=10)
 Label(root, text="Email ID", font=font).grid(row=6, column=0, pady=10)
 Label(root, text="Semester", font=font).grid(row=7, column=0, pady=10)
 
-updt = Button(root, text="Update Details", command=update_stud, font=font)
+updt = Button(root, text="Update Details", command=update_stud, font=font, cursor='hand2')
 updt.grid(row=9, column=0, pady=10, padx=10)
 updt.bind("<Enter>", on_enter)
 updt.bind("<Leave>", on_leave)
 updt.configure(background='#9867c5')
 
 
-rm = Button(root, text="Remove Student", command=remove_stud, font=font)
+rm = Button(root, text="Remove Student", command=remove_stud, font=font, cursor='hand2')
 rm.grid(row=9, column=1, padx=10, pady=10)
 rm.bind("<Enter>", on_enter_del)
 rm.bind("<Leave>", on_leave_del)

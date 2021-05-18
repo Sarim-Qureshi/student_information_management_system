@@ -6,8 +6,6 @@ import re
 from time import sleep
 
 
-
-
 def on_enter_del(e):
     e.widget['background'] = '#900d09'
     e.widget['foreground'] = 'white'

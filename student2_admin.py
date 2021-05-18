@@ -70,7 +70,7 @@ def update_stud1():
 
 
 root = Tk()
-root.geometry("1300x650+0+0")
+root.geometry("1200x600+0+0")
 root.title("Student Details")
 root.resizable(False,False)
 
