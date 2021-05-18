@@ -10,12 +10,8 @@ def update_timetables():
     os.system('update_timetable.py')
 
 
-def check_university_updates():
-    pass
-
-
-def post_results():
-    pass
+def change_pass():
+    os.system('change_password.py exam')
 
 
 def on_enter(e):
@@ -55,22 +51,14 @@ b2.bind("<Leave>", on_leave)
 b2.pack()
 b2.configure(background='#0277bd')
 
+
 f3 = Frame(root, width=300, height=70, borderwidth=10, relief='groove')
 f3.configure(background='#999')
 f3.pack(pady=(20, 20), anchor='c')
-b3 = Button(f3, text='Check university updates', command=check_university_updates, cursor='hand2', font='consolas 14 bold', pady=1, padx=10)
+b3 = Button(f3, text='Change password', command=change_pass, cursor='hand2', font='consolas 14 bold', pady=1, padx=10)
 b3.bind("<Enter>", on_enter)
 b3.bind("<Leave>", on_leave)
 b3.pack()
 b3.configure(background='#0277bd')
-
-# f4 = Frame(root, width=300, height=70, borderwidth=10, relief='groove')
-# f4.configure(background='#999')
-# f4.pack(pady=(20, 20), anchor='c')
-# b4 = Button(f4, text='Post results', command=post_results, cursor='hand2', font='consolas 14 bold', pady=1, padx=10)
-# b4.bind("<Enter>", on_enter)
-# b4.bind("<Leave>", on_leave)
-# b4.pack()
-# b4.configure(background='#0277bd')
 
 root.mainloop()

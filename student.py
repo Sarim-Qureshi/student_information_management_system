@@ -8,7 +8,7 @@ def exam_details():
 
 
 def placement_details():
-    os.system('placement.py')
+    os.system(f'placement.py {sys.argv[4]}')
 
 
 def college_info():

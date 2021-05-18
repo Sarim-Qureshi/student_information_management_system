@@ -36,8 +36,6 @@ def on_leave(e):
     e.widget['foreground'] = 'black'
 
 
-
-
 font = 'consolas 12 bold'
 # mydb = mysql.connector.connect(
 #   host="localhost",
@@ -105,6 +103,16 @@ def showfac_dt():
             sql = ("select * from faculty where fid = {} ".format(facid))
             mycursor.execute(sql)
             res = mycursor.fetchall()
+            cnt = 0
+            for row in res:
+                res = row
+                cnt += 1
+
+            if cnt == 0:
+                messagebox.showinfo('Not found', 'No details available.\n Make sure to enter a valid ID')
+                inp.set('')
+                return
+
             res = res[0]
             name = res[0] + " " + res[1]
             rid = res[2]

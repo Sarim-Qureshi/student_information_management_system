@@ -6,7 +6,6 @@ import re
 import sys
 
 
-
 def on_enter(e):
     e.widget['background'] = '#b29700'
     e.widget['foreground'] = 'white'
@@ -87,13 +86,12 @@ try:
     res = mycursor.fetchall()
     for row in res:
         res = row
-        plfname = res[0]
-        pllname = res[1]
-        plphone = res[2]
-        pldepart = res[3]
-        # facdesig = res[4]
-        plemail = res[5]
-        plid = res[4]
+    plfname = res[0]
+    pllname = res[1]
+    plphone = res[2]
+    pldepart = res[3]
+    plemail = res[5]
+    plid = res[4]
 
     Label(root, text=plfname, font=font, padx=10, pady=10).grid(row=1, column=1)
     Label(root, text=pllname, font=font, padx=10, pady=10).grid(row=2, column=1)

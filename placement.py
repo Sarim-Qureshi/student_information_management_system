@@ -1,4 +1,4 @@
-from tkinter import * 
+from tkinter import *
 from PIL import ImageTk,Image
 from tkinter import messagebox
 from tkinter import filedialog
@@ -57,16 +57,20 @@ tabControl.add(tab2, text ='Placement At a Glance')
 tabControl.place(x = 5,y = 10)
 
 def applyNow():
+	import sys
+	if int(sys.argv[1]) < 7:
+		messagebox.showinfo('Declined', 'Only BE students can apply for placements')
+		return
 
 	company = clickedCompany.get()
 	bad_chars = [';', ':', '!', "*",")","(","\'",","]
 	for i in bad_chars :
 		company = company.replace(i, '')
-	
+
 	#print(company)
 
 	os.system(f'applyNow.py {company}')
-	
+
 
 def display():
 	company = clickedCompany.get()
@@ -109,6 +113,7 @@ def display():
 		# Label(tab2 , text = " ").place(x = 250, y = 200)
 		# Button(tab2, text = "Apply Now",command = applyNow).place(x = 250, y = 200)
 		Label(tab2, text=" ").grid(row=5, column=1, pady=10, padx=10)
+
 		b0 = Button(tab2, text="Apply Now", command=applyNow, cursor='hand2')
 		b0.grid(row=5, column=1, pady=10, padx=10)
 		b0.configure(background='#3cb043', font=font)
@@ -118,7 +123,7 @@ def display():
 
 #print("Seats Available")
 
-	
+
 
 
 
@@ -129,7 +134,7 @@ try:
 	optionCompany = []
 	for row in res:
 		optionCompany = res
-		
+
 except mysql.connector.Error as e:
 	print(e)
 

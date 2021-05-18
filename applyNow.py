@@ -123,7 +123,8 @@ Entry(top,width = 30,textvariable = inpEmail, font=font).grid(row=2, column=1, p
 
 #Label(top, text = "Enter Your Department").place(x = 60, y = 80)
 
-optionYear = ["FE","SE","TE","BE"]
+# optionYear = ["FE","SE","TE","BE"]
+optionYear = ["BE"]
 # stdYear = Label(top, text = "Year").place(x = 20, y = 80)
 stdYear = Label(top, text = "Year", font=font).grid(row=3, column=0, pady=10, padx=10)
 

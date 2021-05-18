@@ -78,13 +78,14 @@ def login():
                     fn = ((res[0])[0]).strip()
                     ln = ((res[0])[1]).strip()
                     ri = (str((res[0])[2])).strip()
-                    os.system(f'student.py {fn} {ln} {ri}')
+                    sem = (str((res[0])[9])).strip()
+
+                    os.system(f'student.py {fn} {ln} {ri} {sem}')
                 else:
                     if sys.argv[1] == 'exam':
                         os.system('exam.py '+UserName)
                     elif sys.argv[1] == 'placement':
                         os.system('placement0.py')
-                    # os.system(sys.argv[1]+'.py '+UserName)
                     elif sys.argv[1] == 'faculty':
                         os.system(f'faculty.py {UserName}')
                     elif sys.argv[1] == 'admin':

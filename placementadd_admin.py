@@ -37,8 +37,8 @@ mydb = mysql.connector.connect(
 mycursor = mydb.cursor()
 
 root = Tk()
-root.geometry("650x500+0+0")
-root.title("Faculty Details")
+root.geometry("730x500+0+0")
+root.title("Placement Details")
 root.resizable(False, False)
 
 emailValidate = '^[a-z0-9]+[\._]?[a-z0-9]+[@]\w+[.]\w{2,3}$'

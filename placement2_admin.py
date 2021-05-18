@@ -99,15 +99,21 @@ def showplace_dt():
             sql = ("select * from placementofficer where plid = {} ".format(plid))
             mycursor.execute(sql)
             res = mycursor.fetchall()
+            cnt = 0
             for row in res:
                 res = row
+                cnt += 1
 
-                name = res[0] + " " + res[1]
-                rid = res[2]
-                phone = res[3]
-                # year = res[4]
-                depart = res[5]
-                email = res[6]
+            if cnt == 0:
+                messagebox.showinfo('Not found', 'No details available.\n Make sure to enter a valid ID')
+                inp.set('')
+                return
+
+            name = res[0] + " " + res[1]
+            rid = res[2]
+            phone = res[3]
+            depart = res[5]
+            email = res[6]
 
             Label(root, text=name, font=font, pady=10, padx=10).grid(row=1, column=1)
             Label(root, text=rid, font=font, pady=10, padx=10).grid(row=2, column=1)

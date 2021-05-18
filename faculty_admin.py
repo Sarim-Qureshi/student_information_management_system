@@ -49,6 +49,4 @@ b2.bind("<Leave>", on_leave)
 b2.pack()
 b2.configure(background='#0277bd')
 
-
-
 root.mainloop()

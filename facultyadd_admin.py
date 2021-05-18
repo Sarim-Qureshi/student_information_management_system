@@ -24,7 +24,7 @@ mydb = mysql.connector.connect(
 mycursor = mydb.cursor()
 
 root = Tk()
-root.geometry("730x580+0+0")
+root.geometry("730x500+0+0")
 root.title("Faculty Details")
 root.resizable(False, False)
 

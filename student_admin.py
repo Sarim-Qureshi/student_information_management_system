@@ -103,16 +103,23 @@ def show_dt():
             sql = ("select * from register where registration_Id = {} ".format(regid))
             mycursor.execute(sql)
             res = mycursor.fetchall()
+            cnt = 0
             for row in res:
                 res = row
+                cnt += 1
 
-                name = res[0] + " " + res[1]
-                rid = res[2]
-                phone = res[3]
-                year = res[4]
-                depart = res[5]
-                email = res[6]
-                sem = res[9]
+            if cnt == 0:
+                messagebox.showinfo('Not found', 'No details available.\n Make sure to enter a valid ID')
+                inp.set('')
+                return
+
+            name = res[0] + " " + res[1]
+            rid = res[2]
+            phone = res[3]
+            year = res[4]
+            depart = res[5]
+            email = res[6]
+            sem = res[9]
 
             Label(root, text=name, font=font).grid(row=1, column=1)
             Label(root, text=rid, font=font).grid(row=2, column=1)
@@ -121,7 +128,6 @@ def show_dt():
             Label(root, text=depart, font=font).grid(row=5, column=1)
             Label(root, text=email, font=font).grid(row=6, column=1)
             Label(root, text=sem, font=font).grid(row=7, column=1)
-
 
 
         except mysql.connector.Error as e:
