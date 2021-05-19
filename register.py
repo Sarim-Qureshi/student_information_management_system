@@ -114,7 +114,7 @@ def register(firstName, lastName, RegisterId, PhoneNumber, SelYear, SelDepart, E
 
                 reciever = inpEmailid.get()
                 Usrpwd = "Congratulations {} {}!! You are verified. Your username and password are as follows:\nUsername: {}\nPassword: {}" \
-                         "\nTo change your credentials, contact the office in the college or send a mail to <office.sakec@sakec.ac.in>\nThank You ".format(
+                         "\nChange your password ASAP through the login page\nThank You ".format(
                     firstName, lastName, uname, psd)
                 messagebox.showinfo("Verified", "Kindly check your email for username and password")
 
@@ -158,6 +158,7 @@ def register(firstName, lastName, RegisterId, PhoneNumber, SelYear, SelDepart, E
             clickedYear.set("")
             clickedDepart.set("")
             inpEmailid.set("")
+            clickedSem.set("")
 
         top.mainloop()
 

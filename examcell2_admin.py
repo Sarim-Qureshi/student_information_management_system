@@ -143,7 +143,7 @@ Label(root, text="Name", font=font, pady=10, padx=10).grid(row=1, column=0)
 Label(root, text="Phone Number", font=font, pady=10, padx=10).grid(row=2, column=0)
 Label(root, text="Department", font=font, pady=10, padx=10).grid(row=3, column=0)
 Label(root, text="Email Id", font=font, pady=10, padx=10).grid(row=4, column=0)
-Label(root, text="Faculty Id", font=font, pady=10, padx=10).grid(row=5, column=0)
+Label(root, text="Exam Officer Id", font=font, pady=10, padx=10).grid(row=5, column=0)
 
 rm = Button(root, text="Remove Exam Officer", width=30, command=remove_examcell, font=font, cursor='hand2')
 rm.grid(row=6, column=1, pady=10, padx=10)

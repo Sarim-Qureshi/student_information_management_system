@@ -12,11 +12,18 @@ font = 'consolas 11'
 font2 = 'consolas 12 bold'
 
 
+# mydb = mysql.connector.connect(
+#   host="localhost",
+#   user="root",
+#   password="",
+#   database="classroom"
+# )
+
 mydb = mysql.connector.connect(
   host="localhost",
   user="root",
   password="",
-  database="classroom"
+  database="sims"
 )
 mycursor=mydb.cursor()
 
@@ -87,7 +94,7 @@ def display():
 	Label(tab2, text = company, font=font).grid(row=1, column=1, pady=10, padx=10)
 
 	try :
-		sql = ("select eligibity,seats,applied from placement where company = \"{}\" ".format(company))
+		sql = ("select eligibility,seats,applied from placement where company = \"{}\" ".format(company))
 		mycursor.execute(sql)
 		res = mycursor.fetchall()
 		eligible = []

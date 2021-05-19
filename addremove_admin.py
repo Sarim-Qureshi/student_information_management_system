@@ -31,11 +31,17 @@ def on_leave(e):
     e.widget['background'] = '#0277bd'
     e.widget['foreground'] = 'black'
 
+# mydb = mysql.connector.connect(
+#   host="localhost",
+#   user="root",
+#   password="",
+#   database="classroom"
+# )
 mydb = mysql.connector.connect(
   host="localhost",
   user="root",
   password="",
-  database="classroom"
+  database="sims"
 )
 mycursor=mydb.cursor()
 
@@ -162,7 +168,7 @@ Entry(tab1, width = 30, textvariable = inpAppliedStud, font=font).grid(row=4, co
 
 
 # Button(tab1, text = "Add",width = 30, command = addcompany).place(x = 210, y = 200)
-b1 = Button(tab1, text = "Add",width = 30, command = addcompany, font=font)
+b1 = Button(tab1, text = "Add",width = 30, command = addcompany, font=font, cursor='hand2')
 b1.grid(row=5, column=1, pady=10, padx=10)
 b1.configure(background='#0277bd', font=font)
 b1.bind("<Enter>", on_enter)
@@ -197,7 +203,7 @@ inputCompany.configure(font=font)
 
 
 # Button(tab2, text = "Show",command = company_details).place(x = 350 , y = 50)
-bv = Button(tab2, text = "Show",command = company_details, font=font)
+bv = Button(tab2, text = "Show",command = company_details, font=font, cursor='hand2')
 bv.grid(row=0, column=2, pady=10, padx=10)
 bv.bind("<Enter>", on_enterv)
 bv.bind("<Leave>", on_leavev)

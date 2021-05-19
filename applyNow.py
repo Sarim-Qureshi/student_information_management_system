@@ -23,12 +23,19 @@ def on_leave0(e):
     e.widget['background'] = '#3cb043'
     e.widget['foreground'] = 'black'
 
+#
+# mydb = mysql.connector.connect(
+#   host="localhost",
+#   user="root",
+#   password="",
+#   database="classroom"
+# )
 
 mydb = mysql.connector.connect(
   host="localhost",
   user="root",
   password="",
-  database="classroom"
+  database="sims"
 )
 mycursor=mydb.cursor()
 
